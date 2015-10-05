@@ -82,7 +82,8 @@ __global__ void convolKernel(float* d_buf, float* d_buf_aux, int nbl, int nbc){
 	       if (j>0){     numerateur += d_buf[(i-1)*nbc+j-1]; ++denominateur; }
 	       if (j<nbc-1){ numerateur += d_buf[(i-1)*nbc+j+1]; ++denominateur; }
 	  }
-														 poids_central = denominateur*0.5f; /* poids central = 50% autres poids */
+
+	 poids_central = denominateur*0.5f; /* poids central = 50% autres poids */
 	 numerateur   += poids_central*d_buf[(i)*nbc+j];
 	 denominateur += poids_central;
 
